@@ -1,20 +1,30 @@
 <template>
-  <form @submit.prevent="submitForm">
-    <label>
+  <form
+    class="border border-neutral-300 px-6 py-6 rounded-sm shadow-md shadow-gray-200 transition-shadow duration-300 hover:shadow-lg"
+    @submit.prevent="submitForm"
+  >
+    <label class="mb-3 block">
       Keyword(s):
-      <input v-model.trim="keyword" type="text" required />
+      <input
+        :class="['input w-full', keywordError ? 'border-red-500' : 'border-gray-300']"
+        v-model.trim="keyword"
+        type="text"
+      />
+      <span class="text-red-600" v-if="keywordError"
+        >Keyword must be at least 3 characters long</span
+      >
     </label>
 
     <label>
       Language:
-      <select v-model="language">
+      <select class="input w-full border-gray-300 mb-5 transition transition-" v-model="language">
         <option value="en">English</option>
         <option value="de">German</option>
         <option value="fr">French</option>
       </select>
     </label>
 
-    <button type="submit">Search</button>
+    <button class="px-4 py-1 border rounded-md border-gray-400" type="submit">Search</button>
   </form>
 </template>
 
@@ -24,25 +34,45 @@ export default {
   data() {
     return {
       keyword: '',
-      language: 'en'
+      language: 'en',
+      keywordError: false
     }
   },
   methods: {
-    submitForm() {
-      // send HTTP request to back-end with keyword and language
-      this.$http
-        .post('/backend/search', {
-          keyword: this.keyword,
-          language: this.language
+    async submitForm() {
+      // validate keyword input
+      if (this.keyword === '' || this.keyword.length < 3) {
+        this.keywordError = true
+        return
+      } else {
+        this.keywordError = false
+      }
+
+      const rssRequestObj = {
+        keyword: this.keyword,
+        language: this.language
+      }
+      try {
+        const response = await fetch('/backend/search', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(rssRequestObj)
         })
-        .then((response) => {
-          // pass response data to parent component as a custom event
-          this.$emit('search-results', response.data)
-        })
-        .catch((error) => {
-          // handle error
-          console.error(error)
-        })
+
+        if (!response.ok) {
+          throw new Error('Failed to retrieve search results')
+        }
+
+        const responseData = await response.json()
+
+        // pass response data to parent component as a custom event
+        this.$emit('search-results', responseData)
+      } catch (error) {
+        // handle error
+        console.error(error)
+      }
     }
   }
 }
