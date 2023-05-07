@@ -31,7 +31,7 @@
 <script>
 let backendUrl = '/backend/src/search.php'
 
-// backendUrl = 'http://localhost:5001/backend/src'
+backendUrl = 'rss.json'
 export default {
   name: 'NewsForm',
   data() {

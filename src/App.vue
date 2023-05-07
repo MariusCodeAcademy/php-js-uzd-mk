@@ -2,23 +2,26 @@
   <div class="container">
     <h1 class="text-3xl font-medium underline py-5">Get your Rss news Today!</h1>
     <NewsForm @rss-data="getRssData" />
+    <rss-table :rss-results="rssJsonData" />
   </div>
 </template>
 <script>
 import NewsForm from './components/NewsForm.vue'
+import RssTable from './components/RssTable.vue'
 export default {
   name: 'App',
   data() {
     return {
-      rssJsonData: {}
+      rssJsonData: []
     }
   },
   components: {
-    NewsForm
+    NewsForm,
+    RssTable
   },
   methods: {
     getRssData(rssData) {
-      console.log('rssData', rssData)
+      // console.log('rssData', JSON.stringify(rssData, null, 2))
       this.rssJsonData = rssData
     }
   }
