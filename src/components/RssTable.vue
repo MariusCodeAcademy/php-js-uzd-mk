@@ -1,10 +1,12 @@
 <template>
-  <div class="">
+  <div
+    class="mt-4 border border-neutral-300 px-6 py-6 rounded-sm shadow-md shadow-gray-200 transition-shadow duration-300 hover:shadow-lg"
+  >
     <h2 class="text-2xl font-bold mb-6">RSS Results</h2>
     <table class="table-fixed">
       <thead>
         <tr>
-          <th class="px-4 py-2">Title</th>
+          <th class="px-4 py-2 w-auto lg:w-[20%]">Title</th>
           <th class="px-4 py-2">Description</th>
           <th class="px-4 py-2">Link</th>
           <th class="px-4 py-2">Publication Date</th>
