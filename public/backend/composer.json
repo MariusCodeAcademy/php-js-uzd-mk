@@ -1,0 +1,21 @@
+{
+    "name": "mkuzminskas/php-rss-be",
+    "description": "Simple back end to query google rss, parse and respond",
+    "type": "project",
+    "require": {
+        "guzzlehttp/psr7": "^2.5",
+        "guzzlehttp/guzzle": "^7.5"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mkuzminskas\\PhpRssBe\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Marius CA",
+            "email": "mariuskcodeacademy@gmail.com"
+        }
+    ]
+}

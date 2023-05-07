@@ -1,0 +1,7 @@
+POST http://localhost:8000/src/search 
+Content-Type: application/json
+
+{
+  "keyword": "AI",
+  "language": "en"
+}

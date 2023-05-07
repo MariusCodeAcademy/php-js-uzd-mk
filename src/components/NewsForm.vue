@@ -29,11 +29,14 @@
 </template>
 
 <script>
+let backendUrl = '/backend/src/search.php'
+
+// backendUrl = 'http://localhost:5001/backend/src'
 export default {
   name: 'NewsForm',
   data() {
     return {
-      keyword: '',
+      keyword: 'ai',
       language: 'en',
       keywordError: false
     }
@@ -41,7 +44,7 @@ export default {
   methods: {
     async submitForm() {
       // validate keyword input
-      if (this.keyword === '' || this.keyword.length < 3) {
+      if (this.keyword === '' || this.keyword.length < 2) {
         this.keywordError = true
         return
       } else {
@@ -53,7 +56,7 @@ export default {
         language: this.language
       }
       try {
-        const response = await fetch('/backend/search', {
+        const response = await fetch(backendUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -68,7 +71,7 @@ export default {
         const responseData = await response.json()
 
         // pass response data to parent component as a custom event
-        this.$emit('search-results', responseData)
+        this.$emit('rss-data', responseData)
       } catch (error) {
         // handle error
         console.error(error)
