@@ -6,12 +6,15 @@
     <label class="mb-3 block">
       Keyword(s):
       <input
-        :class="['input w-full', keywordError ? 'border-red-500' : 'border-gray-300']"
+        :class="[
+          'input w-full',
+          keywordError ? 'border-red-500 outline-red-500 ' : 'border-gray-300'
+        ]"
         v-model.trim="keyword"
         type="text"
       />
       <span class="text-red-600" v-if="keywordError"
-        >Keyword must be at least 3 characters long</span
+        >Keyword must be at least 3 characters long or search for AI</span
       >
     </label>
 
@@ -34,7 +37,7 @@
 let backendUrl = '/backend/app/index.php'
 
 // backendUrl = 'rss.json'
-// backendUrl = 'http://localhost/backend/src/search.php'
+backendUrl = 'http://localhost/backend/app/index.php'
 export default {
   name: 'NewsForm',
   props: {
@@ -50,7 +53,7 @@ export default {
   methods: {
     async submitForm() {
       // validate keyword input
-      if (this.keyword === '' || this.keyword.length < 2) {
+      if (this.isThereInputError) {
         this.keywordError = true
         return
       } else {
@@ -85,6 +88,19 @@ export default {
         console.error(error)
       } finally {
         this.$emit('isLoadingForm', false)
+      }
+    }
+  },
+  computed: {
+    isThereInputError() {
+      return (this.keyword === '' || this.keyword.length < 3) && this.keyword.toLowerCase() !== 'ai'
+    }
+  },
+  watch: {
+    'keyword.length'(count) {
+      console.log('count', count)
+      if (count > 3) {
+        this.keywordError = false
       }
     }
   },
