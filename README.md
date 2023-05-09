@@ -3,6 +3,9 @@
 The app where you can ger rss in your favorite topic by searching in 3 diffenrent languages.
 Just enter a topic, select language and see the results.
 
+- Front end Vue.js cli app,
+- Back end PHP 8
+
 ## instalation
 
 1. `npm run build` - creates 'dist/' folder to be used as the public folder on the server
