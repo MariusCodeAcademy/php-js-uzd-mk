@@ -5,6 +5,7 @@ Just enter a topic, select language and see the results.
 
 - Front end Vue.js cli app,
 - Back end PHP 8
+- Rss feed is from [news.google](https://news.google.com/rss/search)
 
 ## instalation
 
@@ -22,6 +23,11 @@ Just enter a topic, select language and see the results.
 
 1. public/backend/ is the root back end folder in development mode. all composer commands run there.
 2. `npm run build` copies backend folder to dist/ folder
+
+## screenshots
+
+![main-ui](./meta/app1.png)
+![main-validation](./meta/app-err.png)
 
 ## The app is a bit upside down
 
