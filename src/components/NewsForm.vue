@@ -35,9 +35,6 @@
 
 <script>
 let backendUrl = '/backend/app/index.php'
-
-// backendUrl = 'rss.json'
-backendUrl = 'http://localhost/backend/app/index.php'
 export default {
   name: 'NewsForm',
   props: {
@@ -98,7 +95,6 @@ export default {
   },
   watch: {
     'keyword.length'(count) {
-      console.log('count', count)
       if (count > 3) {
         this.keywordError = false
       }

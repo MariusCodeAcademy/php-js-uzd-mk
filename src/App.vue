@@ -38,7 +38,6 @@ export default {
   },
   methods: {
     getRssData(rssData) {
-      // console.log('rssData', JSON.stringify(rssData, null, 2))
       this.rssJsonData = rssData
     },
     updateSearch({ keyword, language }) {
@@ -56,4 +55,3 @@ export default {
   }
 }
 </script>
-<style lang=""></style>

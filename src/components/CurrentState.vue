@@ -6,12 +6,6 @@
       <p v-if="isLoading" class="text-xl font-medium rounded-full px-4 py-1 text-blue-600">
         Loading...
       </p>
-      <!-- <p v-if="state.value === error" class="text-xl font-medium text-red-500 border-y-2 px-4 py-1">
-        Error
-      </p>
-      <p v-if="state.value === ready" class="text-xl font-medium rounded-r-full border-2 px-4 py-1">
-        Ready
-      </p> -->
     </div>
   </div>
 </template>
@@ -25,4 +19,3 @@ export default {
   }
 }
 </script>
-<style></style>
