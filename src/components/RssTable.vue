@@ -20,7 +20,7 @@
           <td class="border px-4 py-2 font-medium">{{ result.title }}</td>
           <td class="description border px-4 py-2" v-html="result.description"></td>
           <td class="border px-4 py-2">
-            <a :href="result.link">link to article </a>
+            <a :href="result.link">source </a>
           </td>
           <td class="border px-4 py-2">{{ result.pubDate }}</td>
         </tr>

@@ -31,9 +31,10 @@
 </template>
 
 <script>
-let backendUrl = '/backend/src/search.php'
+let backendUrl = '/backend/app/index.php'
 
 // backendUrl = 'rss.json'
+// backendUrl = 'http://localhost/backend/src/search.php'
 export default {
   name: 'NewsForm',
   props: {

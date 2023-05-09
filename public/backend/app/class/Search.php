@@ -1,8 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Dipocket;
-require_once __DIR__ . '/../vendor/autoload.php';
+namespace App\Class;
 
 use Exception;
 use SimpleXMLElement;
@@ -15,7 +14,6 @@ class Search
     {
         $rssUrl = $this->rssUrl . '?q=' . urlencode($keyword) . '&hl=' . $language . '&gl=' . $language;
         $rssContent = $this->fetchRssContent($rssUrl);
-        // return $rssContent;
         $rssXml = new SimpleXMLElement($rssContent);
         $items = $rssXml->xpath('//item');
 
@@ -46,34 +44,3 @@ class Search
         return $response->getBody()->getContents();
     }
 }
-
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    exit;
-}
-
-try {
-    $requestBody = file_get_contents('php://input');
-    $requestJson = json_decode($requestBody, true);
-
-    if (!$requestJson || !isset($requestJson['keyword'], $requestJson['language'])) {
-        throw new Exception('Invalid request');
-    }
-
-    $search = new Search();
-    $results = $search->searchNews($requestJson['keyword'], $requestJson['language']);
-
-    header("Access-Control-Allow-Origin: *");
-    header('Content-type: application/json');
-    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-    header('Content-Type: application/json');
-    echo json_encode($results);
-    // echo json_encode(['search' => $search]);
-} catch (Exception $e) {
-    http_response_code(500);
-    // lets get all the error messages
-     
-    // echo json_encode(['error' => $e->getMessage()]);
-    echo json_encode(['error' => $e]);
-}
-
