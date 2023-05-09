@@ -24,16 +24,21 @@
       </select>
     </label>
 
-    <button class="px-4 py-1 border rounded-md border-gray-400" type="submit">Search</button>
+    <button :disabled="isLoading" class="px-4 py-1 border rounded-md border-gray-400" type="submit">
+      {{ isLoading ? 'Loading...' : 'Search' }}
+    </button>
   </form>
 </template>
 
 <script>
 let backendUrl = '/backend/src/search.php'
 
-backendUrl = 'rss.json'
+// backendUrl = 'rss.json'
 export default {
   name: 'NewsForm',
+  props: {
+    isLoading: Boolean
+  },
   data() {
     return {
       keyword: 'ai',
@@ -56,6 +61,7 @@ export default {
         language: this.language
       }
       try {
+        this.$emit('is-loading-form', true)
         const response = await fetch(backendUrl, {
           method: 'POST',
           headers: {
@@ -72,11 +78,15 @@ export default {
 
         // pass response data to parent component as a custom event
         this.$emit('rss-data', responseData)
+        this.$emit('search', rssRequestObj)
       } catch (error) {
         // handle error
         console.error(error)
+      } finally {
+        this.$emit('isLoadingForm', false)
       }
     }
-  }
+  },
+  emits: ['is-loading-form', 'rss-data', 'search']
 }
 </script>

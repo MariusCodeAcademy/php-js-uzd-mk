@@ -2,7 +2,10 @@
   <div
     class="mt-4 border border-neutral-300 px-6 py-6 rounded-sm shadow-md shadow-gray-200 transition-shadow duration-300 hover:shadow-lg"
   >
-    <h2 class="text-2xl font-bold mb-6">RSS Results</h2>
+    <h2 class="text-2xl font-bold mb-6">
+      {{ isLoading ? 'Loading RSS ' : 'RSS Results ' }}
+      {{ `for ${values.search}` }}
+    </h2>
     <table class="table-fixed">
       <thead>
         <tr>
@@ -32,7 +35,11 @@ export default {
     rssResults: {
       type: Array,
       required: true
-    }
+    },
+    values: {
+      type: Object
+    },
+    isLoading: Boolean
   }
 }
 </script>
