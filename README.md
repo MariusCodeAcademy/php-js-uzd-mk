@@ -25,14 +25,15 @@ Just enter a topic, select language and see the results.
 2. `npm run build` copies backend folder to dist/ folder
 3. For local testing of the app you can run `php -S localhost:3003` in the dist folder.(yoo have to have php installed on the system).
 
-## screenshots
-
-![main-ui](./meta/app1.png)
-![main-validation](./meta/app-err.png)
-
 ## The app is a bit upside down
 
 I have more experience in front end. There for my app is build so that the back end is inside the front end. I understand it should be other way around. But i have not know the right way to do that. In order for this to work as it should I should put 'dist' folder inside 'backend' folder as 'public' and make the server root folder 'public' and route the trafic to be index.php to process the Post requests. I have failed to do that.
 But Other than that, app works as it is.
+
+## screenshots
+
+![main-ui](./meta/app1.png)
+![main-loading](./meta/app-loading.png)
+![main-validation](./meta/app-err.png)
 
 ### Author Marius Kuzminskas
