@@ -23,6 +23,7 @@ Just enter a topic, select language and see the results.
 
 1. public/backend/ is the root back end folder in development mode. all composer commands run there.
 2. `npm run build` copies backend folder to dist/ folder
+3. For local testing of the app you can run `php -S localhost:3003` in the dist folder.(yoo have to have php installed on the system).
 
 ## screenshots
 
