@@ -1,35 +1,28 @@
-# php-js-rss-mk
+# RSS feed fetching app
 
-This template should help get you started developing with Vue 3 in Vite.
+The app where you can ger rss in your favorite topic by searching in 3 diffenrent languages.
+Just enter a topic, select language and see the results.
 
-## Recommended IDE Setup
+## instalation
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+1. `npm run build` - creates 'dist/' folder to be used as the public folder on the server
+2. dist/ folder is the folder that can hosted for the app to work.
 
-## Customize configuration
+## commands
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### fe
 
-## Project Setup
+1. `npm install` instals fe dev dependancies
+2. `npm run build` builds the dist/ folder
 
-```sh
-npm install
-```
+### be
 
-### Compile and Hot-Reload for Development
+1. public/backend/ is the root back end folder in development mode. all composer commands run there.
+2. `npm run build` copies backend folder to dist/ folder
 
-```sh
-npm run dev
-```
+## The app is a bit upside down
 
-### Compile and Minify for Production
+I have more experience in front end. There for my app is build so that the back end is inside the front end. I understand it should be other way around. But i have not know the right way to do that. In order for this to work as it should I should put 'dist' folder inside 'backend' folder as 'public' and make the server root folder 'public' and route the trafic to be index.php to process the Post requests. I have failed to do that.
+But Other than that, app works as it is.
 
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+### Author Marius Kuzminskas
